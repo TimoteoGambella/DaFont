@@ -1,8 +1,8 @@
-h1{
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
+*{
+    padding: 0px;
+    margin: 0px;
 }
-h2{
-    font-family: 'Inter', sans-serif;
-    font-weight: 100;
-}
+
+@import "./variables.scss";
+
+@import "./components/navbar.scss";

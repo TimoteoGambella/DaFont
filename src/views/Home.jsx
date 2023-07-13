@@ -1,6 +1,7 @@
 import { Fragment, useContext } from "react"
 import { UseWebContext } from "../context/WebContext"
 import FontsLinks from "../components/FontsLinks/FontsLinks"
+import Navbar from "../components/Navbar/Navbar"
 
 export default function Home(){
 
@@ -15,6 +16,7 @@ export default function Home(){
                     </Fragment>
                 )
             })}
+            <Navbar/>
         </div>
     )
 }
