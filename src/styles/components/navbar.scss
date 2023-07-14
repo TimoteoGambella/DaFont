@@ -1,8 +1,61 @@
 .navbar-container{
     width: 100%;
     background-color: $color-red;
-    padding: 23px 156px;
+    padding: 23px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 48px;
+    .input-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        padding: 0px 16px;
+        border-radius: 50px;
+        background: #FFF;
+        input{
+            all: unset;
+            width: 520px;
+            padding: 14px 0px;
+        }
+        svg{
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+        }
+    }
+    .user{
+        color: white;
+        margin-left: 175px;
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+    .language{
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+}
+.bar-container{
+    width: 100%;
+    background-color: $color-red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+    padding-bottom: 24px;
+    p{
+        color: white;
+        padding: 0px 16px;
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
 }
