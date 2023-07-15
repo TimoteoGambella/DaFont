@@ -7,7 +7,7 @@ export const WebContext = ({ children }) => {
 
     const [fonts,setFonts]=useState(null)
     const [loader,setLoader]=useState(true)
-    const [pagination,setPagination]=useState(20)
+    const [pagination,setPagination]=useState(10)
     const [textVisual,setTextVisual]=useState("")
 
     useEffect(() => {

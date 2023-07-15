@@ -8,8 +8,8 @@ export default function Navbar(){
     const navigate = useNavigate()
       
     return(
-        <>
-            <div className="navbar-container">
+        <div className="navbar-container">
+            <div className="first-navbar">
                 <img className="logo" src={logo} alt="LOGO" onClick={()=>navigate("/")}/>
                 
                 <Searcher/>
@@ -18,6 +18,6 @@ export default function Navbar(){
                 <LanguageIcon className="language" color="secondary"/>
             </div>
             <Bar/>
-        </>
+        </div>
     )
 }

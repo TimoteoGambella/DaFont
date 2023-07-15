@@ -9,7 +9,7 @@ export default function Home(){
 
     return(
         <div className="home-container">
-            <Filtros/>
+            {/* <Filtros/>
 
             {loader ? 
                 <Loader/>
@@ -27,8 +27,7 @@ export default function Home(){
                         }
                     })}
                 </div>
-            }
-
+            } */}
         </div>
     )
 }

@@ -4,7 +4,7 @@ import FontsLinks from "./FontsLinks"
 
 export default function ChargeFonts(){
 
-    const {fonts,setLoader}=useContext(UseWebContext)
+    const {fonts,setLoader,pagination}=useContext(UseWebContext)
 
     return(
         <>
@@ -14,11 +14,17 @@ export default function ChargeFonts(){
                         setLoader(false)
                     }, 5000);
                 }
-                return(
-                    <Fragment key={i}>
-                        <FontsLinks font={obj}/>
-                    </Fragment>
-                )
+                if(i<pagination){
+                    return(
+                        <Fragment key={i}>
+                            <FontsLinks font={obj}/>
+                        </Fragment>
+                    )
+                }else{
+                    return(
+                        <Fragment key={i}></Fragment>
+                    )
+                }
             })}
         </>
     )
