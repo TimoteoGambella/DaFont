@@ -5,23 +5,30 @@ import FontCard from "../components/FontCard/FontCard";
 import Loader from "../components/Loader/Loader";
 
 export default function Home(){
-    const {fonts}=useContext(UseWebContext)
+    const {fonts,loader,pagination}=useContext(UseWebContext)
 
     return(
-        <div>
+        <div className="home-container">
             <Filtros/>
 
-            {/* <div className="cards-container">
-                {fonts && fonts.map((obj,i)=>{
-                    return(
-                        <Fragment key={i}>
-                            <FontCard font={obj}/>
-                        </Fragment>
-                    )
-                })}
-            </div> */}
+            {loader ? 
+                <Loader/>
+                :
+                <div className="cards-container">
+                    {fonts && fonts.map((obj,i)=>{
+                        if(i<pagination){
+                            return(
+                                <Fragment key={i}>
+                                    <FontCard font={obj}/>
+                                </Fragment>
+                            )
+                        }else{
+                            return(<></>)
+                        }
+                    })}
+                </div>
+            }
 
-            <Loader/>
         </div>
     )
 }

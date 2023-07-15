@@ -7,15 +7,19 @@ export default function ChargeFonts(){
     const {fonts,setLoader}=useContext(UseWebContext)
 
     return(
-        <div>
+        <>
             {fonts && fonts.map((obj,i)=>{
-                if(i===fonts.lenght-1){setLoader(false)}
+                if(i===fonts.length-1){
+                    setTimeout(() => {
+                        setLoader(false)
+                    }, 5000);
+                }
                 return(
                     <Fragment key={i}>
                         <FontsLinks font={obj}/>
                     </Fragment>
                 )
             })}
-        </div>
+        </>
     )
 }

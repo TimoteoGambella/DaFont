@@ -7,6 +7,8 @@ export const WebContext = ({ children }) => {
 
     const [fonts,setFonts]=useState(null)
     const [loader,setLoader]=useState(true)
+    const [pagination,setPagination]=useState(20)
+    const [textVisual,setTextVisual]=useState("")
 
     useEffect(() => {
         if(!fonts){
@@ -46,12 +48,17 @@ export const WebContext = ({ children }) => {
             }
         );
     };
-
+    
     return (
         <UseWebContext.Provider
             value={{
                 fonts,
-                setLoader
+                loader,
+                setLoader,
+                pagination,
+                setPagination,
+                textVisual,
+                setTextVisual
             }}
         >
             {children}
