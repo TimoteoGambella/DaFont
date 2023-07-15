@@ -1,11 +1,13 @@
 .navbar-container{
-    width: 100%;
     background-color: $color-red;
     padding: 23px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 48px;
+    .logo{
+        cursor: pointer;
+    }
     .input-container{
         display: flex;
         justify-content: center;

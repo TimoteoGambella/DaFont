@@ -1,22 +1,27 @@
-import { Fragment, useContext } from "react"
-import { UseWebContext } from "../context/WebContext"
-import FontsLinks from "../components/FontsLinks/FontsLinks"
-import Navbar from "../components/Navbar/Navbar"
+import { Fragment, useContext } from "react";
+import Filtros from "../components/Filtros/Filtros";
+import { UseWebContext } from "../context/WebContext";
+import FontCard from "../components/FontCard/FontCard";
+import Loader from "../components/Loader/Loader";
 
 export default function Home(){
-
     const {fonts}=useContext(UseWebContext)
 
     return(
         <div>
-            {fonts && fonts.map((obj,i)=>{
-                return(
-                    <Fragment key={obj.family}>
-                        <FontsLinks font={obj}/>
-                    </Fragment>
-                )
-            })}
-            <Navbar/>
+            <Filtros/>
+
+            {/* <div className="cards-container">
+                {fonts && fonts.map((obj,i)=>{
+                    return(
+                        <Fragment key={i}>
+                            <FontCard font={obj}/>
+                        </Fragment>
+                    )
+                })}
+            </div> */}
+
+            <Loader/>
         </div>
     )
 }

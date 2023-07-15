@@ -6,6 +6,7 @@ export const UseWebContext = createContext();
 export const WebContext = ({ children }) => {
 
     const [fonts,setFonts]=useState(null)
+    const [loader,setLoader]=useState(true)
 
     useEffect(() => {
         if(!fonts){
@@ -49,7 +50,8 @@ export const WebContext = ({ children }) => {
     return (
         <UseWebContext.Provider
             value={{
-                fonts
+                fonts,
+                setLoader
             }}
         >
             {children}
