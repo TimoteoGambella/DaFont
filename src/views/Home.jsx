@@ -9,9 +9,9 @@ export default function Home(){
 
     return(
         <div className="home-container">
-            {/* <Filtros/>
+            <Filtros/>
 
-            {loader ? 
+            {/* {loader ? 
                 <Loader/>
                 :
                 <div className="cards-container">

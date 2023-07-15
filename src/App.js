@@ -22,15 +22,17 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <WebContext>
-        <Router>
-          <Navbar/> 
-          <ChargeFonts/>
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </Router>
-      </WebContext>
+      <div className="principal-container">
+        <WebContext>
+          <Router>
+            <Navbar/> 
+            {/* <ChargeFonts/> */}
+            <Routes>
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </Router>
+        </WebContext>
+      </div>
     </ThemeProvider>
   );
 }
