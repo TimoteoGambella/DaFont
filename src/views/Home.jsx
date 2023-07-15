@@ -11,7 +11,7 @@ export default function Home(){
         <div className="home-container">
             <Filtros/>
 
-            {/* {loader ? 
+            {loader ? 
                 <Loader/>
                 :
                 <div className="cards-container">
@@ -23,11 +23,11 @@ export default function Home(){
                                 </Fragment>
                             )
                         }else{
-                            return(<></>)
+                            return(<Fragment key={i}></Fragment>)
                         }
                     })}
                 </div>
-            } */}
+            }
         </div>
     )
 }

@@ -26,7 +26,7 @@ function App() {
         <WebContext>
           <Router>
             <Navbar/> 
-            {/* <ChargeFonts/> */}
+            <ChargeFonts/>
             <Routes>
               <Route path="/" element={<Home />} />
             </Routes>

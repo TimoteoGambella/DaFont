@@ -12,7 +12,7 @@ export default function Filtros(){
         <div className="filtros-container">
             <h1 className='font-34 title'>Últimas agregadas</h1>
             <div className='filtros'>
-                <input type="text font-16" placeholder="Escribe algo aqui para previsualizarlo" value={textVisual} onChangeCapture={(e)=>setTextVisual(e.target.value)}/>
+                <input type="text font-16" placeholder="Escribe algo aqui para previsualizarlo" defaultValue={textVisual} onChangeCapture={(e)=>setTextVisual(e.target.value)}/>
                 <div className='red-back'>
                     <TuneIcon color="secondary"/>
                     <p className='font-16' style={{color:"white"}}>Filtros</p>

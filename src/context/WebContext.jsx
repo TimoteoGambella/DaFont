@@ -14,7 +14,23 @@ export const WebContext = ({ children }) => {
         if(!fonts){
             apiFetch()
         }
+
+        window.addEventListener("scroll",()=>onScroll())
+        window.removeEventListener("scroll",()=>onScroll())
     }, [])
+
+    const onScroll=()=>{
+        const documentHeight = document.documentElement.scrollHeight;
+        const viewportHeight = window.innerHeight;
+
+        const scrollPosition = window.scrollY;
+        
+        const endOfPage = documentHeight - viewportHeight;
+        
+        if (scrollPosition >= endOfPage) {
+            
+        }
+    }
 
     const apiFetch= async()=>{
         await fetch(`https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_PASSWORDGOOGLE}`).then(res=>{
