@@ -36,7 +36,12 @@ export const UserContext = ({ children }) => {
     const addUser = async (newUser) => {
         const user = await addDoc(collection(db, 'usuarios'), newUser);
         return user.id;
-        
+    };
+
+    const getUser = async (email) => {
+        const user = await doc(collection(db, 'usuarios').where("email","==",email));
+        console.log(user)
+        return user.id;
     };
 
     const updateUser = async (idUser, library, balance) => {
@@ -49,7 +54,8 @@ export const UserContext = ({ children }) => {
         <UseUserContext.Provider
             value={{
                 user,
-                addUser
+                addUser,
+                getUser
             }}
         >
             {children}

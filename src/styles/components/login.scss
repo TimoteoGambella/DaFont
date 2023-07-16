@@ -1,0 +1,140 @@
+.login-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    .banner{
+        width: 50%;
+        height: 100vh;
+        background: url("../../assets/login-register.png");
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 11;
+        .fondo{
+            background-color: rgb(204, 0, 0,0.5);
+            width: 50vw;
+            height: 100vh;
+            z-index: 10;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 12;
+            .first{
+                transform: rotate(-2.231deg);
+                color: #FFF;
+                font-size: 40px;
+                font-weight: 400;
+                line-height: 45px;
+                width: 514.574px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .second{
+                color: #FFF;
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 20px;
+                span{
+                    font-weight: 800;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: rgb(255, 255, 255,0.3);
+                    }
+                }
+            }
+        }
+    }
+    .login{
+        width: 50%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .container{
+            width: 424px;
+            display: flex;
+            align-items: start;
+            justify-content: center;
+            flex-direction: column;    
+            gap: 48px;
+            h1{
+                color: #C00;
+            }
+            .input{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                gap: 24px;
+                svg{
+                    cursor: pointer;
+                    &:hover{
+                        transform: scale(1.05);
+                    }
+                }
+            }
+            .button-container{
+                .button-1{
+                    border-radius: 50px;
+                    background: #C00;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 456px;
+                    cursor: pointer;
+                    &:hover{
+                        transform: scale(1.05);
+                    }
+                    p{
+                        padding: 10px 0px;
+                    }
+                }
+                .separator{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 5px;
+                    margin-top: 24px;
+                    margin-bottom: 24px;
+                    p{
+                        color: #79747E;
+                    }
+                    .line{
+                        height: 0.8px;
+                        width: 216px;
+                        background: #79747E;
+                    }
+                }
+                .button-2{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 6px;
+                    border-radius: 50px;
+                    background: #CCDFFF;
+                    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.16);
+                    padding: 12px 0px;
+                    cursor: pointer;
+                    p{
+                        color: #444;
+                    }
+                    svg{
+                        color: #444;
+                        width: 18px;
+                        height: 18px;
+                    }
+                }
+            }
+        }
+    }
+}

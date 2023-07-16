@@ -1,9 +1,9 @@
 import { WebContext } from "./context/WebContext";
+import { UserContext } from "./context/UserContext";
 import { BrowserRouter as Router,Route, Routes } from 'react-router-dom';
 import Home from "./views/Home";
-import Navbar from "./components/Navbar/Navbar";
-import ChargeFonts from "./components/FontsLinks/ChargeFonts";
 import { ThemeProvider, createTheme } from "@mui/material";
+import Login from "./views/Login";
 
 function App() {
   const theme = createTheme({
@@ -16,6 +16,9 @@ function App() {
         },
         warning:{
           main:"#CC0000"
+        },
+        grey:{
+          main:"#49454F"
         }
     },
 });
@@ -24,13 +27,14 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="principal-container">
         <WebContext>
-          <Router>
-            <Navbar/> 
-            <ChargeFonts/>
-            <Routes>
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </Router>
+          <UserContext>
+            <Router>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/Login" element={<Login />} />
+              </Routes>
+            </Router>
+          </UserContext>
         </WebContext>
       </div>
     </ThemeProvider>

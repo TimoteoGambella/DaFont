@@ -1,0 +1,37 @@
+.specialInput {
+    div {
+        width: 424px;
+        border-radius: 50px;
+        fieldset {
+            border-color: #49454F !important;
+        }
+        input{
+            color: #49454F;
+        }
+    }
+
+    p {
+        color: #444444;
+    }
+
+    &.error {
+        label {
+            color: #F73939;
+        }
+
+        div {
+            width: 424px;
+            border-radius: 50px;
+            fieldset {
+                border-color: #F73939 !important;
+            }
+            input{
+                color: #F73939;
+            }
+        }
+
+        p {
+            color: #F73939;
+        }
+    }
+}
