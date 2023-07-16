@@ -12,7 +12,7 @@ export default function ChargeFonts(){
                 if(i===fonts.length-1){
                     setTimeout(() => {
                         setLoader(false)
-                    }, 3000);
+                    }, 2000);
                 }
                 if(i<pagination){
                     return(

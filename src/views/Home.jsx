@@ -5,7 +5,7 @@ import FontCard from "../components/FontCard/FontCard";
 import Loader from "../components/Loader/Loader";
 
 export default function Home(){
-    const {fonts,loader,pagination}=useContext(UseWebContext)
+    const {fonts,loader,loader2,pagination}=useContext(UseWebContext)
 
     return(
         <div className="home-container">
@@ -26,6 +26,11 @@ export default function Home(){
                             return(<Fragment key={i}></Fragment>)
                         }
                     })}
+                </div>
+            }
+            {!loader && loader2 &&
+                <div style={{marginBottom:"40px"}}>
+                    <Loader/>
                 </div>
             }
         </div>

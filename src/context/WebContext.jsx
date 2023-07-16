@@ -7,7 +7,8 @@ export const WebContext = ({ children }) => {
 
     const [fonts,setFonts]=useState(null)
     const [loader,setLoader]=useState(true)
-    const [pagination,setPagination]=useState(10)
+    const [loader2,setLoader2]=useState(false)
+    const [pagination,setPagination]=useState(15)
     const [textVisual,setTextVisual]=useState("")
 
     useEffect(() => {
@@ -16,7 +17,7 @@ export const WebContext = ({ children }) => {
         }
 
         window.addEventListener("scroll",()=>onScroll())
-        window.removeEventListener("scroll",()=>onScroll())
+        window.removeEventListener("scroll", onScroll());
     }, [])
 
     const onScroll=()=>{
@@ -28,7 +29,10 @@ export const WebContext = ({ children }) => {
         const endOfPage = documentHeight - viewportHeight;
         
         if (scrollPosition >= endOfPage) {
-            
+            setLoader2(true)
+            setTimeout(() => {
+                setPagination((prevPagination) => prevPagination + 15)
+            }, 2000);
         }
     }
 
@@ -74,7 +78,9 @@ export const WebContext = ({ children }) => {
                 pagination,
                 setPagination,
                 textVisual,
-                setTextVisual
+                setTextVisual,
+                loader2,
+                setLoader2
             }}
         >
             {children}
