@@ -16,6 +16,7 @@ import {
 export const UseUserContext = createContext();
 
 export const UserContext = ({ children }) => {
+    const CryptoJS = require("crypto-js");
 
     const [user,setUser]=useState(null)
 
@@ -38,10 +39,26 @@ export const UserContext = ({ children }) => {
         return user.id;
     };
 
-    const getUser = async (email) => {
-        const user = await doc(collection(db, 'usuarios').where("email","==",email));
-        console.log(user)
-        return user.id;
+    const getUser = async (email,password) => {
+        const userRef = collection(db, 'usuarios');
+        const querySnapshot = await getDocs(query(userRef, where("email", "==", email),where("password","==",password)));
+        if(querySnapshot.docs.length!==0){
+            const user = querySnapshot.docs[0].data();
+            return {...user,id:querySnapshot.docs[0].id};
+        }else{
+            return false
+        }
+    };
+    const getUserById = async (id) => {
+        let idCrypt = CryptoJS.AES.decrypt(id, "clave_secreta").toString(CryptoJS.enc.Utf8)
+        const userRef = doc(db, 'usuarios', idCrypt);
+        const userDoc = await getDoc(userRef)
+        const user = userDoc.data();
+        if(user){
+            return {...user,id:userDoc.id};
+        }else{
+            return false
+        }
     };
 
     const updateUser = async (idUser, library, balance) => {
@@ -54,8 +71,10 @@ export const UserContext = ({ children }) => {
         <UseUserContext.Provider
             value={{
                 user,
+                setUser,
                 addUser,
-                getUser
+                getUser,
+                getUserById
             }}
         >
             {children}

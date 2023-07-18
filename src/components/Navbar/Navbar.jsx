@@ -3,10 +3,13 @@ import LanguageIcon from '@mui/icons-material/Language';
 import Searcher from "./Searcher";
 import Bar from "./Bar";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UseUserContext } from "../../context/UserContext";
 
 export default function Navbar(){
     const navigate = useNavigate()
-      
+    const {user}=useContext(UseUserContext)
+
     return(
         <div className="navbar-container">
             <div className="first-navbar">
@@ -14,7 +17,11 @@ export default function Navbar(){
                 
                 <Searcher/>
 
-                <p className="user font-16">Ingresa</p>
+                <p className="user font-16" onClick={()=>{
+                    if(!user){
+                        navigate("/Login")
+                    }
+                }}>{user?user.user:"Ingresa"}</p>
                 <LanguageIcon className="language" color="secondary"/>
             </div>
             <Bar/>

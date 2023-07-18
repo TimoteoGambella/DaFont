@@ -1,7 +1,7 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { TextField } from "@mui/material";
 
-export default function Input({label,helper,pass,showPass,setShowPass,error,handleChange,nameData}){
+export default function Input({label,helper,pass,showPass,setShowPass,error,handleChange,nameData,extraClass}){
     return(
         <TextField
             variant="outlined"
@@ -12,7 +12,7 @@ export default function Input({label,helper,pass,showPass,setShowPass,error,hand
             type={!pass?"text":showPass?"text":"password"}
             color="grey"
             className={
-                `specialInput
+                `specialInput ${extraClass}
                 ${!error  && "active"}
                 ${error  && "error"}`
             }
