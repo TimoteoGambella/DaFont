@@ -37,11 +37,11 @@ export const UserContext = ({ children }) => {
         if(localStorage.getItem("id-dafont")){
             getUserById(localStorage.getItem("id-dafont")).then((res)=>{
                 if(res){
+                    setMainLoader(false)
                     setUser(res)
                 }
             })
         }else{
-            window.location.replace("/Login")
             setMainLoader(false)
         }
     }, []);

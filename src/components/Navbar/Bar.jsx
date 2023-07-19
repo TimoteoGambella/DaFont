@@ -18,8 +18,7 @@ export default function Bar(){
         }).then((result) => {
             if (result.isConfirmed) {
                 setUser(null)
-            } else if (result.isDenied) {
-                
+                localStorage.removeItem("id-dafont")
             }
         })
     }
