@@ -4,7 +4,9 @@ import GoogleIcon from '@mui/icons-material/Google';
 import Loader from "../components/Loader/Loader";
 import { UseUserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
-import { handleSubmit } from "../services/login";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Banner from "../components/Banner/Banner";
+import {handleLogin} from "../services/login"
 
 export default function Login(){
     const navigate = useNavigate()
@@ -34,18 +36,13 @@ export default function Login(){
     }
 
     const submit=()=>{
-        handleSubmit(data,setLoader,setErrorMessage,setErrorMessage2,setErrorMessage3,errors,setErrors,getUser,navigate,setUser)
+        handleLogin(data,setLoader,setErrorMessage,setErrorMessage2,setErrorMessage3,errors,setErrors,getUser,navigate,setUser)
     }
 
     return(
         <div className="login-container">
-            <div className="banner">
-                <div className="fondo"></div>
-                <div className="container">
-                    <p className="first">Accede a las 70,000 fonts que tenemos para ti</p>
-                    <p className="second">¿No tienes cuenta?  <span>Regístrate aquí</span></p>
-                </div>
-            </div>
+            <ArrowBackIcon className="arrow-back" onClick={()=>navigate(-1)}/>
+            <Banner text={"login"} route={"/Register"}/>
             {mainLoader ?
                 <div style={{width:"50%"}}>
                     <Loader/> 

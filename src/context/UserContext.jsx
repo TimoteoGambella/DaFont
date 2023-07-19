@@ -48,7 +48,7 @@ export const UserContext = ({ children }) => {
 
     const addUser = async (newUser) => {
         const user = await addDoc(collection(db, 'usuarios'), newUser);
-        return user.id;
+        return {...newUser,id:user.id};
     };
 
     const getUser = async (email,password) => {
@@ -72,6 +72,16 @@ export const UserContext = ({ children }) => {
             return false
         }
     };
+    const getUserByEmail = async (email) => {
+        const userRef = collection(db, 'usuarios');
+        const querySnapshot = await getDocs(query(userRef, where("email", "==", email)));
+        if(querySnapshot.docs.length!==0){
+            const user = querySnapshot.docs[0].data();
+            return {...user,id:querySnapshot.docs[0].id};
+        }else{
+            return false
+        }
+    };
 
     const updateUser = async (idUser, library, balance) => {
         const user = doc(db, 'usuarios', idUser);
@@ -87,7 +97,8 @@ export const UserContext = ({ children }) => {
                 setUser,
                 addUser,
                 getUser,
-                getUserById
+                getUserById,
+                getUserByEmail
             }}
         >
             {children}

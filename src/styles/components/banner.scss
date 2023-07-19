@@ -1,0 +1,50 @@
+.banner{
+    width: 50%;
+    height: 100vh;
+    background: url("../../assets/login-register.png");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 11;
+    .fondo{
+        background-color: rgb(204, 0, 0,0.5);
+        width: 50vw;
+        height: 100vh;
+        z-index: 10;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 12;
+        .first{
+            transform: rotate(-2.231deg);
+            color: #FFF;
+            font-size: 40px;
+            font-weight: 400;
+            line-height: 45px;
+            width: 514.574px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .second{
+            color: #FFF;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20px;
+            span{
+                font-weight: 800;
+                cursor: pointer;
+                padding: 5px 10px;
+                &:hover{
+                    background-color: rgb(255, 255, 255,0.3);
+                }
+            }
+        }
+    }
+}

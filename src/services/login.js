@@ -1,6 +1,6 @@
-export const handleSubmit=({data,setLoader,setErrorMessage,setErrorMessage2,setErrorMessage3,errors,setErrors,getUser,navigate,setUser})=>{
+export const handleLogin=(data,setLoader,setErrorMessage,setErrorMessage2,setErrorMessage3,errors,setErrors,getUser,navigate,setUser)=>{
     const CryptoJS = require("crypto-js");
-
+    console.log(data)
     setLoader(true)
     const validRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 

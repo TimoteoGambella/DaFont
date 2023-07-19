@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { Fragment, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { UseUserContext } from "../../context/UserContext"
 import Swal from "sweetalert2"
@@ -27,14 +27,14 @@ export default function Bar(){
         <div className="bar-container">
             {barList.map((obj,i)=>{
                 return(
-                    <>
+                    <Fragment key={i}>
                         {obj!=="Cerrar sesión" && 
-                            <p key={i} className="font-16">{obj}</p>
+                            <p className="font-16">{obj}</p>
                         }
                         {obj==="Cerrar sesión" && user && 
-                            <p key={i} className="font-16" onClick={()=>handleSesion()}>{obj}</p>
+                            <p className="font-16" onClick={()=>handleSesion()}>{obj}</p>
                         }
-                    </>
+                    </Fragment>
                 )
             })}
         </div>
