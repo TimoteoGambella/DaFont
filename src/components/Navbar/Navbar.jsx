@@ -8,7 +8,7 @@ import { UseUserContext } from "../../context/UserContext";
 
 export default function Navbar(){
     const navigate = useNavigate()
-    const {user}=useContext(UseUserContext)
+    const {user,mainLoader}=useContext(UseUserContext)
 
     return(
         <div className="navbar-container">
@@ -21,7 +21,7 @@ export default function Navbar(){
                     if(!user){
                         navigate("/Login")
                     }
-                }}>{user?user.user:"Ingresa"}</p>
+                }}>{user?user.user:!mainLoader&&"Ingresa"}</p>
                 <LanguageIcon className="language" color="secondary"/>
             </div>
             <Bar/>

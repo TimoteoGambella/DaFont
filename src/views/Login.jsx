@@ -1,15 +1,15 @@
-import {  useContext, useEffect, useState } from "react";
+import {  useContext, useState } from "react";
 import Input from "../components/Input/Input";
 import GoogleIcon from '@mui/icons-material/Google';
 import Loader from "../components/Loader/Loader";
 import { UseUserContext } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import { handleSubmit } from "../services/login";
 
 export default function Login(){
-    const CryptoJS = require("crypto-js");
     const navigate = useNavigate()
 
-    const {getUser,getUserById,setUser}=useContext(UseUserContext)
+    const {getUser,mainLoader,setUser}=useContext(UseUserContext)
 
     const [data,setData]=useState({
         password:"",
@@ -26,20 +26,6 @@ export default function Login(){
 
     const [showPass,setShowPass]=useState(false)
     const [loader,setLoader]=useState(false)
-    const [mainLoader,setMainLoader]=useState(true)
-
-    useEffect(() => {
-        if(localStorage.getItem("id-dafont")){
-            getUserById(localStorage.getItem("id-dafont")).then((res)=>{
-                if(res){
-                    setUser(res)
-                    navigate("/")
-                }
-            })
-        }else{
-            setMainLoader(false)
-        }
-    }, []);
 
     const handleChange=(e,dataName)=>{
         setErrors({...errors,[dataName]:false})
@@ -47,55 +33,8 @@ export default function Login(){
         setData({...data,[dataName]:e})
     }
 
-    const handleSubmit=()=>{
-        setLoader(true)
-        const validRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    
-        let email=false
-        let password=false
-
-        if(data.email===""){
-            email=true
-            setErrorMessage("Campo obligatorio")
-        }
-        if(data.password===""){
-            password=true
-            setErrorMessage2("Campo obligatorio")
-        }
-        if(email || password){
-            setErrors({
-                password:password,
-                email:email    
-            })
-            setLoader(false)
-            return
-        }
-        
-        if(!data.email.match(validRegex)){
-            setErrors({...errors,email:true})
-            setErrorMessage("Correo incorrecto")
-            setLoader(false)
-            return
-        }
-        if(data.password.length<10){
-            setErrors({...errors,password:true})
-            setErrorMessage2("Mínimo 10 caracteres")
-            setLoader(false)
-            return
-        }
-
-        getUser(data.email,data.password).then((res)=>{
-            if(res){
-                let id = CryptoJS.AES.encrypt(res.id,'clave_secreta').toString()
-                localStorage.setItem("id-dafont",id)
-                setUser(res)
-                setLoader(false)
-                navigate("/")
-            }else{
-                setLoader(false)
-                setErrorMessage3("El usuario es incorrecto o no existe")
-            }
-        })
+    const submit=()=>{
+        handleSubmit(data,setLoader,setErrorMessage,setErrorMessage2,setErrorMessage3,errors,setErrors,getUser,navigate,setUser)
     }
 
     return(
@@ -122,7 +61,7 @@ export default function Login(){
                         </div>
                         <div className="button-container">
                             {loader ? <Loader/> :
-                                <button className="button-1" onClick={()=>handleSubmit()}>
+                                <button className="button-1" onClick={()=>submit()}>
                                     <p className="font-16">Iniciar sesión</p>
                                 </button>
                             }

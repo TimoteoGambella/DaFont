@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { initializeApp } from "firebase/app";
 import {
     getFirestore,
@@ -8,9 +8,7 @@ import {
     where,
     addDoc,
     doc,
-    setDoc,
     getDoc,
-    orderBy,
 } from 'firebase/firestore';
 
 export const UseUserContext = createContext();
@@ -19,6 +17,7 @@ export const UserContext = ({ children }) => {
     const CryptoJS = require("crypto-js");
 
     const [user,setUser]=useState(null)
+    const [mainLoader,setMainLoader]=useState(true)
 
     const firebaseConfig = {
       apiKey: process.env.REACT_APP_FIREBASE,
@@ -33,6 +32,19 @@ export const UserContext = ({ children }) => {
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+
+    useEffect(() => {
+        if(localStorage.getItem("id-dafont")){
+            getUserById(localStorage.getItem("id-dafont")).then((res)=>{
+                if(res){
+                    setUser(res)
+                }
+            })
+        }else{
+            window.location.replace("/Login")
+            setMainLoader(false)
+        }
+    }, []);
 
     const addUser = async (newUser) => {
         const user = await addDoc(collection(db, 'usuarios'), newUser);
@@ -70,6 +82,7 @@ export const UserContext = ({ children }) => {
     return (
         <UseUserContext.Provider
             value={{
+                mainLoader,
                 user,
                 setUser,
                 addUser,
