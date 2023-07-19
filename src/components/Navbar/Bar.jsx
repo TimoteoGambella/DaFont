@@ -7,7 +7,15 @@ export default function Bar(){
     const navigate = useNavigate()
     const {user,setUser}=useContext(UseUserContext)
 
-    const barList=["Estilos","Autores","Comunidad","Identificar fuente","Aportar fuente","FAQ","Cerrar sesión"]
+    const barList=[
+        {title:"Estilos",route:"/"},
+        {title:"Autores",route:"/"},
+        {title:"EstComunidadilos",route:"/"},
+        {title:"Identificar fuente",route:"/"},
+        {title:"Aportar fuente",route:"/"},
+        {title:"Favoritos",route:"/Favs"},
+        {title:"Cerrar sesión"}
+    ]
 
     const handleSesion=()=>{
         Swal.fire({
@@ -28,11 +36,11 @@ export default function Bar(){
             {barList.map((obj,i)=>{
                 return(
                     <Fragment key={i}>
-                        {obj!=="Cerrar sesión" && 
-                            <p className="font-16">{obj}</p>
+                        {obj.title!=="Cerrar sesión" && 
+                            <p onClick={()=>navigate(obj.route)} className="font-16">{obj.title}</p>
                         }
-                        {obj==="Cerrar sesión" && user && 
-                            <p className="font-16" onClick={()=>handleSesion()}>{obj}</p>
+                        {obj.title==="Cerrar sesión" && user && 
+                            <p className="font-16" onClick={()=>handleSesion()}>{obj.title}</p>
                         }
                     </Fragment>
                 )

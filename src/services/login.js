@@ -30,12 +30,6 @@ export const handleLogin=(data,setLoader,setErrorMessage,setErrorMessage2,setErr
         setLoader(false)
         return
     }
-    if(data.password.length<10){
-        setErrors({...errors,password:true})
-        setErrorMessage2("Mínimo 10 caracteres")
-        setLoader(false)
-        return
-    }
 
     getUser(data.email,data.password).then((res)=>{
         if(res){
