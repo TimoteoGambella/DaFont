@@ -9,6 +9,7 @@ import {
     addDoc,
     doc,
     getDoc,
+    setDoc,
 } from 'firebase/firestore';
 
 export const UseUserContext = createContext();
@@ -83,10 +84,10 @@ export const UserContext = ({ children }) => {
         }
     };
 
-    const updateUser = async (idUser, library, balance) => {
-        const user = doc(db, 'usuarios', idUser);
-        // await setDoc(user, { biblioteca: library, mediosPago: balance }, { merge: true });
-        return true;
+    const updateUser = async (idUser, newFavs) => {
+        const userDoc = doc(db, 'usuarios', idUser);
+        await setDoc(userDoc, { favs:newFavs }, { merge: true })
+        setUser({...user,favs:newFavs})
     };
     
     return (
@@ -98,7 +99,8 @@ export const UserContext = ({ children }) => {
                 addUser,
                 getUser,
                 getUserById,
-                getUserByEmail
+                getUserByEmail,
+                updateUser
             }}
         >
             {children}

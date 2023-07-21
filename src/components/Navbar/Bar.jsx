@@ -10,7 +10,7 @@ export default function Bar(){
     const barList=[
         {title:"Estilos",route:"/"},
         {title:"Autores",route:"/"},
-        {title:"EstComunidadilos",route:"/"},
+        {title:"Comunidad",route:"/"},
         {title:"Identificar fuente",route:"/"},
         {title:"Aportar fuente",route:"/"},
         {title:"Favoritos",route:"/Favs"},
