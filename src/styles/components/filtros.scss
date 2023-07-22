@@ -5,6 +5,9 @@
     flex-direction: column;
     .title{
         padding: 32px 0px;
+        &.favs{
+            width: 1112px;
+        }
     }
     .filtros{
         border-radius: 30px;

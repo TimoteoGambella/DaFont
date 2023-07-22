@@ -5,9 +5,11 @@ import FontCard from "../components/FontCard/FontCard";
 import Loader from "../components/Loader/Loader";
 import Navbar from "../components/Navbar/Navbar";
 import ChargeFonts from "../components/FontsLinks/ChargeFonts";
+import { UseUserContext } from "../context/UserContext";
 
-export default function Home(){
+export default function Favorites(){
     const {fonts,loader,loader2,pagination}=useContext(UseWebContext)
+    const {user}=useContext(UseUserContext)
 
     return(
         <>
@@ -15,13 +17,14 @@ export default function Home(){
             <ChargeFonts/>
             <div className="home-container">
 
-                <Filtros text={"Últimas agregadas"} filters={true}/>
+                <Filtros text={"Favoritos"}/>
 
                 {loader ? 
                     <Loader/>
                     :
+                    user.favs.length===0 ? <h2>No tienes favoritos</h2> :
                     <div className="cards-container">
-                        {fonts && fonts.map((obj,i)=>{
+                        {fonts && user.favs.map((obj,i)=>{
                             if(i<pagination){
                                 return(
                                     <Fragment key={i}>
@@ -32,11 +35,6 @@ export default function Home(){
                                 return(<Fragment key={i}></Fragment>)
                             }
                         })}
-                    </div>
-                }
-                {!loader && loader2 &&
-                    <div style={{marginBottom:"40px"}}>
-                        <Loader/>
                     </div>
                 }
             </div>

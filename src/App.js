@@ -5,6 +5,7 @@ import Home from "./views/Home";
 import { ThemeProvider, createTheme } from "@mui/material";
 import Login from "./views/Login";
 import Register from "./views/Register";
+import Favorites from "./views/Favorites";
 
 function App() {
   const theme = createTheme({
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/Login" element={<Login />} />
                 <Route path="/Register" element={<Register />} />
+                <Route path="/Favs" element={<Favorites />} />
               </Routes>
             </Router>
           </UserContext>
