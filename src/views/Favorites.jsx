@@ -8,9 +8,9 @@ import ChargeFonts from "../components/FontsLinks/ChargeFonts";
 import { UseUserContext } from "../context/UserContext";
 
 export default function Favorites(){
-    const {fonts,loader,loader2,pagination}=useContext(UseWebContext)
+    const {fonts,loader,pagination}=useContext(UseWebContext)
     const {user}=useContext(UseUserContext)
-
+    console.log(user)
     return(
         <>
             <Navbar/> 
