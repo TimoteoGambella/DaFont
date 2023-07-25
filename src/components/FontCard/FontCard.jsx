@@ -17,8 +17,10 @@ export default function FontCard({font}){
     const [working,setWorking]=useState(false)
 
     useEffect(() => {
-        if(user.favs.find(e=>e.family===font.family)){
-            setInFav(true)
+        if(user){
+            if(user.favs.find(e=>e.family===font.family)){
+                setInFav(true)
+            }
         }
     }, []);
 

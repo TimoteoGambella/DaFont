@@ -27,6 +27,7 @@ export default function Bar(){
             if (result.isConfirmed) {
                 setUser(null)
                 localStorage.removeItem("id-dafont")
+                window.location.reload()
             }
         })
     }
